@@ -73,7 +73,7 @@ snapshot: .goreleaser.yml tools/goreleaser
 # Non-PHONY targets (real files)
 
 $(BINARY): FORCE
-	go build -o $@ ./cmd/golangci-lint
+	go build -gcflags='all=-N -l' -o $@ ./cmd/golangci-lint
 
 tools/goreleaser: export GOFLAGS = -mod=readonly
 tools/goreleaser: tools/go.mod tools/go.sum
